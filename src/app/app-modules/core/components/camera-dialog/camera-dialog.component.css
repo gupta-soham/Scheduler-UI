@@ -1,0 +1,29 @@
+.center-btn {
+    justify-content: center !important;
+    display: flex !important;
+}
+
+#workarea {
+    height: 80%;
+    width: 80%;
+    min-width: 600px;
+    min-height: 600px;
+}
+
+#photo {
+    overflow: hidden;
+    width: 600px;
+    height: 400px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.overflown {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.dialog {
+    padding: 24px;
+}

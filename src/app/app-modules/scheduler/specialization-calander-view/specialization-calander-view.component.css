@@ -1,0 +1,82 @@
+.scrolling table {
+    margin-top: 10px;
+    table-layout: inherit;
+    border-spacing: 0px !important;
+}
+
+.scrolling td {
+    vertical-align: top;
+    padding: 0px;
+    min-width: 120px;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.scrolling thead td {
+    background: lightgray;
+}
+
+.scrolling th {
+    white-space: nowrap;
+    position: absolute;
+    left: 0;
+    width: 150px;
+    background: lightgray;
+}
+
+.outer {
+    position: relative
+}
+
+.inner {
+    overflow-x: auto;
+    overflow-y: visible;
+    margin-left: 150px;
+}
+
+.slot-container {
+    display: block;
+    white-space: nowrap;
+    height: 36px;
+}
+
+.slot {
+    display: inline-block;
+    position: relative;
+    width: 122px;
+    height: 36px;
+    border: 1px solid gray;
+    border-spacing: 0px;
+    padding: 8px;
+}
+
+.event {
+    height: 34px;
+    line-height: 34px;
+    color: white;
+    z-index: 999;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    border: 1px dotted navy;
+}
+
+.input-full-width {
+    width: 100%;
+}
+
+.example-container {
+    width: 100%;
+    height: 70vh;
+}
+
+.example-sidenav-content {
+    height: 100%;
+}
+
+.example-sidenav {
+    height: 100%;
+    width: 33%;
+    background: #f2f2f0 !important;
+    border: 1px solid white;
+}

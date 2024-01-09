@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "hash": "165bbdec76051fc8dbedcc368754c937684c8957",
+  "shortHash": "165bbde",
+  "commit": "165bbdec76051fc8dbedcc368754c937684c8957",
+  "shortCommit": "165bbde",
+  "author": "Mithun James",
+  "email": "drtechie@users.noreply.github.com",
+  "date": "Wed Nov 22 15:57:30 2023 +0530",
+  "message": "Add force to npm install"
+}

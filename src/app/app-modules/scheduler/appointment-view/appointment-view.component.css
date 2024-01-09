@@ -1,0 +1,135 @@
+.example-container {
+    width: 100%;
+    /* height: 71vh; */
+    margin-bottom: 40px;
+}
+
+.example-sidenav-content {
+    height: 100%;
+}
+
+.example-sidenav {
+    height: 100%;
+    width: 33%;
+    background: #f2f2f0 !important;
+    border: 1px solid white;
+}
+
+.input-full-width {
+    width: 100%;
+}
+
+md2-pagination {
+    text-align: right;
+}
+
+/* :host /deep/ .pagination {
+    margin: 0;
+} */
+
+ul {
+    list-style: none;
+    padding: 0px;
+}
+
+ul li {
+    display: inline-block;
+    padding: 0 8px;
+}
+
+ul li div, ul li p {
+    display: inline-block;
+}
+
+ul li div {
+    height: 15px;
+    width: 15px;
+}
+
+.marker-p-f-c {
+    background: #0b69b2;
+}
+
+.marker-p-f-d-u {
+    background: brown;
+}
+
+.marker-p-f-t {
+    background: #e44e4f;
+}
+
+.marker-t-d {
+    background: #eaaa26;
+}
+
+.marker-c-d {
+    background: #43760f;
+}
+
+.visitStatus {
+    position: relative;
+    text-align: center;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.centered {
+    justify-content: center;
+    display: flex;
+}
+
+.visitStatus.p-f-c::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 1px;
+    width: 4px;
+    background: #0b69b2;
+}
+
+.visitStatus.p-f-d-u::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 1px;
+    width: 4px;
+    background: brown;
+}
+
+.visitStatus.p-f-t::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 1px;
+    width: 4px;
+    background: #e44e4f;
+}
+
+.visitStatus.t-d::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 1px;
+    width: 4px;
+    background: #eaaa26;
+}
+
+.visitStatus.c-d::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 1px;
+    width: 4px;
+    background: #43760f;
+}
+
+.totalCount, .description {
+    padding-top: 15px;
+}

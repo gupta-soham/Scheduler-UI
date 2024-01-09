@@ -1,0 +1,60 @@
+.input-full-width {
+    width: 100%;
+}
+
+.radio-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+}
+
+.radio-list md-radio-button {
+    /* margin: 0 5px; */
+}
+
+.day-list {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+.day-list button {
+    margin: 5px;
+}
+
+.box {
+    height: 55px !important;
+}
+
+.panel {
+    margin-bottom: 0;
+}
+
+md-card {
+    padding: 15px !important;
+    margin-bottom: 8px;
+}
+
+@media only screen and (min-width: 780px) {
+    .calender {
+        padding-right: 5px !important;
+    }
+    .availability-form {
+        padding-left: 5px !important;
+    }
+}
+
+.timepicker.mat-option {
+    white-space: nowrap;
+    display: inline-block;
+    border: 1px solid green;
+    margin: 5px;
+    padding: 0px;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    font-size: 12px;
+    line-height: 40px;
+    text-align: center;
+}
