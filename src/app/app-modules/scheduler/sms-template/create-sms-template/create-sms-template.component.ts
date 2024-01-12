@@ -74,7 +74,6 @@ export class CreateSmsTemplateComponent implements OnInit, DoCheck {
   ngDoCheck(): void {
     throw new Error('Method not implemented.');
   }
-
   ngOnInit() {
     this.smsTemplateCreationForm = this.createsmsTemplateCreationForm();
     this.getSMSType();

@@ -32,32 +32,37 @@
     </mat-dialog-actions>
 </div>
 
-
 <div class="container-fluid dialog" *ngIf="imageCode">
-    <mat-dialog-content>
-        <div class="row">
-            <img id="photo" [src]="imageCode" alt="imageCode" />
-        </div>
-    </mat-dialog-content>
-    <mat-dialog-actions align="center">
-        <div class="row">
-            <button mat-raised-button color="primary" mat-dialog-close>{{currentLanguageSet?.close}}</button>
-        </div>
-    </mat-dialog-actions>
+  <mat-dialog-content>
+    <div class="row">
+      <img id="photo" [src]="imageCode" alt="imageCode" />
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <div class="row">
+      <button mat-raised-button color="primary" mat-dialog-close>
+        {{ currentLanguageSet?.close }}
+      </button>
+    </div>
+  </mat-dialog-actions>
 </div>
 
-
-<div class="container-fluid dialog" *ngIf="!imageCode && !capture && !annotate && !graph">
-    <mat-dialog-content>
-        <div class="row">
-            <h3> {{currentLanguageSet?.noDataAvailable}} </h3>
-        </div>
-    </mat-dialog-content>
-    <mat-dialog-actions align="center">
-        <div class="row">
-            <button mat-raised-button color="primary" mat-dialog-close>{{currentLanguageSet?.close}}</button>
-        </div>
-    </mat-dialog-actions>
+<div
+  class="container-fluid dialog"
+  *ngIf="!imageCode && !capture && !annotate && !graph"
+>
+  <mat-dialog-content>
+    <div class="row">
+      <h3>{{ currentLanguageSet?.noDataAvailable }}</h3>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions align="center">
+    <div class="row">
+      <button mat-raised-button color="primary" mat-dialog-close>
+        {{ currentLanguageSet?.close }}
+      </button>
+    </div>
+  </mat-dialog-actions>
 </div>
 
 <div class="container-fluid dialog" *ngIf="annotate">
@@ -79,18 +84,81 @@
                 </div>
             </div>
         </div>
-    </mat-dialog-content>
+        <canvas
+          width="250"
+          height="250"
+          (click)="pointMark($event)"
+          #myCanvas
+          style="border: 1px solid #d3d3d3"
+        ></canvas>
+      </div>
 
-    <mat-dialog-actions align="center">
-        <div class="row">
-            <button mat-raised-button color="primary" mat-dialog-close>{{currentLanguageSet?.close}}</button>
-            <button mat-raised-button color="primary" [disabled]="!markers.length" (click)="clearPointers()">{{currentLanguageSet?.reset}}</button>
-            <button mat-raised-button color="primary" [disabled]="!markers.length" [mat-dialog-close]="getMarkers()">{{currentLanguageSet?.save}}</button>
+      <div class="col-md-7 overflown col-sm-7">
+        <h4>{{ currentLanguageSet?.markDescriptions }}</h4>
+        <div *ngFor="let mark of markers">
+          <mat-form-field [style.width]="'100%'">
+            <input
+              autocomplete="off"
+              mdInput
+              placeholder="{{ mark.point }}."
+              maxlength="30"
+              [(ngModel)]="mark.description"
+            />
+          </mat-form-field>
         </div>
-    </mat-dialog-actions>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="center">
+    <div class="row">
+      <button mat-raised-button color="primary" mat-dialog-close>
+        {{ currentLanguageSet?.close }}
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!markers.length"
+        (click)="clearPointers()"
+      >
+        {{ currentLanguageSet?.reset }}
+      </button>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!markers.length"
+        [mat-dialog-close]="getMarkers()"
+      >
+        {{ currentLanguageSet?.save }}
+      </button>
+    </div>
+  </mat-dialog-actions>
 </div>
 
 <div class="container-fluid dialog" *ngIf="graph">
+  <mat-dialog-content
+    id="container-dialog"
+    style="max-height: unset !important"
+  >
+    <h4 *ngIf="graph?.type === 'bw'">
+      {{ currentLanguageSet?.bodyWeightTrends }}
+    </h4>
+    <h4 *ngIf="graph?.type === 'bg'">
+      {{ currentLanguageSet?.bloodGlucoseTrends }}
+    </h4>
+    <h4 *ngIf="graph?.type === 'bp'">
+      {{ currentLanguageSet?.bloodPressureTrends }}
+    </h4>
+    <canvas
+      baseChart
+      [datasets]="graph?.chartData"
+      [labels]="graph?.chartLabels"
+      [options]="graph?.lineChartOptions"
+      [legend]="graph?.chartLegend"
+      [data]="barChartData"
+      [type]="barChartType"
+    ></canvas>
+  </mat-dialog-content>
 
     <mat-dialog-content id="container-dialog" style="max-height: unset !important;">
         <h4 *ngIf="graph?.type == 'bw'"> {{currentLanguageSet?.bodyWeightTrends}} </h4>
