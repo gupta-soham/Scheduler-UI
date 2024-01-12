@@ -1,32 +1,38 @@
 /*
-* AMRIT – Accessible Medical Records via Integrated Technology 
-* Integrated EHR (Electronic Health Records) Solution 
-*
-* Copyright (C) "Piramal Swasthya Management and Research Institute" 
-*
-* This file is part of AMRIT.
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see https://www.gnu.org/licenses/.
-*/
-import { Directive, ElementRef, Attribute, HostListener, Input } from '@angular/core';
+ * AMRIT – Accessible Medical Records via Integrated Technology
+ * Integrated EHR (Electronic Health Records) Solution
+ *
+ * Copyright (C) "Piramal Swasthya Management and Research Institute"
+ *
+ * This file is part of AMRIT.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see https://www.gnu.org/licenses/.
+ */
+import {
+  Directive,
+  ElementRef,
+  Attribute,
+  HostListener,
+  Input,
+} from '@angular/core';
 import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 @Directive({
-  selector: '[allowText][formControlName],[allowText][formControl],[allowText][ngModel],[allowText]'
+  selector:
+    '[allowText][formControlName],[allowText][formControl],[allowText][ngModel],[allowText]',
 })
 export class StringValidator {
-
   @Input()
   allowText!: string;
 
@@ -45,13 +51,12 @@ export class StringValidator {
   lastValue = null;
   result!: boolean;
 
-  constructor(private elementRef: ElementRef) { }
+  constructor(private elementRef: ElementRef) {}
 
   validate(input: any) {
-    let patternCode = this.allowText.trim();
+    const patternCode = this.allowText.trim();
 
-    if (input == null || input == '')
-      return false;
+    if (input == null || input == '') return false;
 
     switch (patternCode) {
       case 'alphabet':
@@ -84,41 +89,39 @@ export class StringValidator {
       case 'address':
         this.result = this.address.test(input);
         break;
-      default: this.result = false;
+      default:
+        this.result = false;
     }
     return this.result;
   }
 
   @HostListener('input', ['$event'])
   onInput(event: any) {
-    let val = event.target.value;
-    let lastVal = this.lastValue;
-    let maxlength = event.target.maxLength;
+    const val = event.target.value;
+    const lastVal = this.lastValue;
+    const maxlength = event.target.maxLength;
 
     if (this.allowText.trim() == 'decimal') {
-      if (val == ''){
+      if (val == '') {
         event.target.value = '';
-      } else if (!(this.validate(val))) {
+      } else if (!this.validate(val)) {
         event.target.value = lastVal;
       }
     } else {
-
-      var inserted = this.findDelta(val, lastVal);
+      const inserted = this.findDelta(val, lastVal);
       // get removed chars
-      var removed = this.findDelta(lastVal, val);
+      const removed = this.findDelta(lastVal, val);
       // determine if user pasted content
-      var pasted = inserted.length >= 1 || (!inserted && !removed);
+      const pasted = inserted.length >= 1 || (!inserted && !removed);
 
       if (maxlength > 0 && val.length > maxlength) {
         event.target.value = lastVal;
       } else {
         if (pasted) {
-          if (!(this.isValidString(val))) event.target.value = lastVal;
+          if (!this.isValidString(val)) event.target.value = lastVal;
+        } else if (!removed) {
+          if (!this.isValidChar(inserted)) event.target.value = lastVal;
         }
-        else if (!removed) {
-          if (!(this.isValidChar(inserted))) event.target.value = lastVal;
-        }
-
       }
     }
     this.lastValue = event.target.value;
@@ -126,7 +129,7 @@ export class StringValidator {
 
   @HostListener('focus', ['$event'])
   onFocus(event: any) {
-    let input = event.target.value;
+    const input = event.target.value;
     this.lastValue = input;
   }
 
@@ -134,8 +137,8 @@ export class StringValidator {
     let delta = '';
 
     for (let i = 0; i < value.length; i++) {
-      let str = value.substr(0, i) +
-        value.substr(i + value.length - prevValue.length);
+      const str =
+        value.substr(0, i) + value.substr(i + value.length - prevValue.length);
 
       if (str === prevValue)
         delta = value.substr(i, value.length - prevValue.length);
@@ -150,7 +153,7 @@ export class StringValidator {
 
   isValidString(str: any) {
     for (let i = 0; i < str.length; i++)
-      if (!(this.isValidChar(str.substr(i, 1)))) return false;
+      if (!this.isValidChar(str.substr(i, 1))) return false;
     return true;
   }
 }
