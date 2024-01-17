@@ -26,6 +26,7 @@ import {
   ChangeDetectorRef,
   Input,
   OnChanges,
+  DoCheck,
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -43,7 +44,7 @@ import { Options } from 'html2canvas';
   templateUrl: './timesheet.component.html',
   styleUrls: ['./timesheet.component.css'],
 })
-export class TimesheetComponent implements OnInit, OnChanges {
+export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
   @Input()
   getChangedTab!: boolean;
 

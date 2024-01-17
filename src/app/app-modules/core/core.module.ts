@@ -43,14 +43,7 @@ import { ShowCommitAndVersionDetailsComponent } from './components/show-commit-a
 import { PreviousDetailsComponent } from './components/previous-details/previous-details.component';
 import { SpinnerComponent } from './components/spinner/spinner.component';
 import { TextareaDialogComponent } from './components/textarea-dialog/textarea-dialog.component';
-import { myEmail } from './directives/email/myEmail.directive';
-import { myMobileNumber } from './directives/MobileNumber/myMobileNumber.directive';
-import { myName } from './directives/name/myName.directive';
-import { myPassword } from './directives/password/myPassword.directive';
-import { DisableFormControlDirective } from './directives/disableFormControl.directive';
 import { NullDefaultValueDirective } from './directives/null-default-value.directive';
-import { NumberValidator } from './directives/numberValidator.directive';
-import { StringValidator } from './directives/stringValidator.directive';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { MatInputModule } from '@angular/material/input';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -65,6 +58,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MaterialModule } from './material.module';
 import { WebcamModule } from 'ngx-webcam';
 import { NgChartsModule } from 'ng2-charts';
+import { MyMobileNumberDirective } from './directives/MobileNumber/myMobileNumber.directive';
+import { DisableFormControlDirective } from './directives/disableFormControl.directive';
+import { myEmailDirective } from './directives/email/myEmail.directive';
+import { myNameDirective } from './directives/name/myName.directive';
+import { NumberValidatorDirective } from './directives/numberValidator.directive';
+import { myPasswordDirective } from './directives/password/myPassword.directive';
+import { StringValidatorDirective } from './directives/stringValidator.directive';
 
 @NgModule({
   imports: [
@@ -97,14 +97,14 @@ import { NgChartsModule } from 'ng2-charts';
     AppHeaderComponent,
     PreviousDetailsComponent,
     ShowCommitAndVersionDetailsComponent,
-    myEmail,
-    myMobileNumber,
-    myName,
-    myPassword,
+    myEmailDirective,
+    MyMobileNumberDirective,
+    myNameDirective,
+    myPasswordDirective,
     DisableFormControlDirective,
     NullDefaultValueDirective,
-    NumberValidator,
-    StringValidator,
+    NumberValidatorDirective,
+    StringValidatorDirective,
   ],
   exports: [
     RouterModule,
@@ -120,14 +120,14 @@ import { NgChartsModule } from 'ng2-charts';
     AppHeaderComponent,
     PreviousDetailsComponent,
     ShowCommitAndVersionDetailsComponent,
-    myEmail,
-    myMobileNumber,
-    myName,
-    myPassword,
+    myEmailDirective,
+    MyMobileNumberDirective,
+    myNameDirective,
+    myPasswordDirective,
     DisableFormControlDirective,
     NullDefaultValueDirective,
-    NumberValidator,
-    StringValidator,
+    NumberValidatorDirective,
+    StringValidatorDirective,
   ],
 })
 export class CoreModule {

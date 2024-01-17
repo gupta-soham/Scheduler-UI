@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { SchedulerService } from '../shared/services';
 import { Router } from '@angular/router';
 import { HttpServiceService } from '../../core/services/http-service.service';
@@ -30,7 +30,7 @@ import { SetLanguageComponent } from '../../core/components/set-language.compone
   templateUrl: './mystaff.component.html',
   styleUrls: ['./mystaff.component.css'],
 })
-export class MystaffComponent implements OnInit {
+export class MystaffComponent implements OnInit, DoCheck {
   specialistList = [];
   filterTerm: any;
   filteredSpecialistList: any[] = [];

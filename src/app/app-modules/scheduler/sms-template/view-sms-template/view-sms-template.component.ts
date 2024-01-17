@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import { SchedulerService } from '../../shared/services';
 import { ActivatedRoute } from '@angular/router';
@@ -31,7 +31,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './view-sms-template.component.html',
   styleUrls: ['./view-sms-template.component.css'],
 })
-export class ViewSmsTemplateComponent implements OnInit {
+export class ViewSmsTemplateComponent implements OnInit, DoCheck {
   languageComponent!: SetLanguageComponent;
   currentLanguageSet: any;
 

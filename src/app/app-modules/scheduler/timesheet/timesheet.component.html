@@ -142,7 +142,7 @@
                 formControlName="configuredToTime"
                 name="configuredToTime"
                 [min]="
-                  configuredFromDate?.getTime() == configuredToDate?.getTime()
+                  configuredFromDate?.getTime() === configuredToDate?.getTime()
                     ? configuredFromTime
                     : null
                 "

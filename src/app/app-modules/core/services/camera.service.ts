@@ -31,24 +31,26 @@ import { CameraDialogComponent } from '../components/camera-dialog/camera-dialog
 
 @Injectable()
 export class CameraService {
-  constructor(
-    private dialog: MatDialog,
-    @Inject(DOCUMENT) doc: any,
-  ) {}
+  constructor(private dialog: MatDialog) {}
 
   public capture(titleAlign = 'center'): Observable<any> {
-    let dialogRef: MatDialogRef<CameraDialogComponent>;
+    // const dialogRef: MatDialogRef<CameraDialogComponent>;
     const config = new MatDialogConfig();
-    dialogRef = this.dialog.open(CameraDialogComponent, config);
+    const dialogRef: MatDialogRef<CameraDialogComponent> = this.dialog.open(
+      CameraDialogComponent,
+      config,
+    );
     dialogRef.componentInstance.capture = true;
     dialogRef.componentInstance.imageCode = false;
     return dialogRef.afterClosed();
   }
 
   public viewImage(benImageCode: string, titleAlign = 'center'): void {
-    let dialogRef: MatDialogRef<CameraDialogComponent>;
     const config = new MatDialogConfig();
-    dialogRef = this.dialog.open(CameraDialogComponent, config);
+    const dialogRef: MatDialogRef<CameraDialogComponent> = this.dialog.open(
+      CameraDialogComponent,
+      config,
+    );
     dialogRef.componentInstance.capture = false;
     dialogRef.componentInstance.imageCode = benImageCode;
   }
@@ -58,10 +60,12 @@ export class CameraService {
     points: any,
     titleAlign = 'center',
   ): Observable<any> {
-    let dialogRef: MatDialogRef<CameraDialogComponent>;
-    dialogRef = this.dialog.open(CameraDialogComponent, {
-      width: '80%',
-    });
+    const dialogRef: MatDialogRef<CameraDialogComponent> = this.dialog.open(
+      CameraDialogComponent,
+      {
+        width: '80%',
+      },
+    );
     dialogRef.componentInstance.capture = false;
     dialogRef.componentInstance.imageCode = false;
     dialogRef.componentInstance.annotate = image;
@@ -70,10 +74,12 @@ export class CameraService {
   }
 
   public ViewGraph(graph: any): void {
-    let dialogRef: MatDialogRef<CameraDialogComponent>;
-    dialogRef = this.dialog.open(CameraDialogComponent, {
-      width: '80%',
-    });
+    const dialogRef: MatDialogRef<CameraDialogComponent> = this.dialog.open(
+      CameraDialogComponent,
+      {
+        width: '80%',
+      },
+    );
     dialogRef.componentInstance.capture = false;
     dialogRef.componentInstance.imageCode = false;
     dialogRef.componentInstance.annotate = false;

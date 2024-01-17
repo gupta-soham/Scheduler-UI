@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import { SchedulerService } from '../../shared/services';
 import { Router } from '@angular/router';
@@ -30,9 +30,10 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './sms-template-list.component.html',
   styleUrls: ['./sms-template-list.component.css'],
 })
-export class SmsTemplateListComponent implements OnInit {
+export class SmsTemplateListComponent implements OnInit, DoCheck {
   languageComponent!: SetLanguageComponent;
   currentLanguageSet: any;
+  templateList: any = [];
   displayedColumns: string[] = [
     'sNo',
     'templateName',
@@ -54,7 +55,7 @@ export class SmsTemplateListComponent implements OnInit {
     this.getAllSMSTemplates();
     this.fetchLanguageResponse();
   }
-  templateList = [];
+
   getAllSMSTemplates() {
     this.schedulerService.getAllSMSTemplates().subscribe({
       next: (res: any) => {

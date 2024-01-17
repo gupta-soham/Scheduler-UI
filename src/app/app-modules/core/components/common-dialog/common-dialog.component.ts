@@ -19,7 +19,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  DoCheck,
+} from '@angular/core';
 import { HttpServiceService } from '../../services/http-service.service';
 import { SetLanguageComponent } from '../set-language.component';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -28,7 +34,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './common-dialog.component.html',
   styleUrls: ['./common-dialog.component.css'],
 })
-export class CommonDialogComponent implements OnInit {
+export class CommonDialogComponent implements OnInit, DoCheck {
   @Output() cancelEvent = new EventEmitter();
 
   public title!: string;

@@ -19,11 +19,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Directive, ElementRef, Attribute, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: '[defaultNull]',
+  selector: '[appDefaultNull]',
 })
 export class NullDefaultValueDirective {
   constructor(

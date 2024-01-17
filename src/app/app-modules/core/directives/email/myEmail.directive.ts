@@ -20,30 +20,21 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 import { Directive, forwardRef } from '@angular/core';
-import {
-  NG_VALIDATORS,
-  Validator,
-  Validators,
-  ValidatorFn,
-  AbstractControl,
-} from '@angular/forms';
+import { NG_VALIDATORS, Validator, AbstractControl } from '@angular/forms';
 
 @Directive({
-  selector: '[validateEmail]',
+  selector: '[appValidateEmail]',
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: forwardRef(() => myEmail),
+      useExisting: forwardRef(() => myEmailDirective),
       multi: true,
     },
   ],
 })
-export class myEmail implements Validator {
+export class myEmailDirective implements Validator {
   pattern =
     /^[0-9a-zA-Z_.]+@[a-zA-Z_]+?\.\b(org|com|in|co.in|ORG|COM|IN|CO.IN)\b$/;
-
-  constructor() {}
-
   validate(control: AbstractControl): { [key: string]: any } | null {
     const input = control.value;
     if (input == '' || input == null) return null;

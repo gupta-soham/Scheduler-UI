@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { SchedulerService } from '../shared/services/scheduler.service';
 import { ConfirmationService } from '../../core/services/confirmation.service';
 
@@ -12,7 +12,7 @@ import * as moment from 'moment';
   templateUrl: './appointment-view.component.html',
   styleUrls: ['./appointment-view.component.css'],
 })
-export class AppointmentViewComponent implements OnInit, OnDestroy {
+export class AppointmentViewComponent implements OnInit, OnDestroy, DoCheck {
   languageComponent!: SetLanguageComponent;
   selectedSpecialization: any;
   selectedSpecialist: any;

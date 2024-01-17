@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, DoCheck } from '@angular/core';
 import { HttpServiceService } from '../../services/http-service.service';
 import { SetLanguageComponent } from '../set-language.component';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -29,7 +29,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './show-commit-and-version-details.component.html',
   styleUrls: ['./show-commit-and-version-details.component.css'],
 })
-export class ShowCommitAndVersionDetailsComponent implements OnInit {
+export class ShowCommitAndVersionDetailsComponent implements OnInit, DoCheck {
   currentLanguageSet: any;
   languageComponent!: SetLanguageComponent;
   constructor(

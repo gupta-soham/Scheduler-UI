@@ -110,8 +110,6 @@ export class RedirOpenComponent implements OnInit {
   validateSessionKey() {
     this.authService.validateSessionKey().subscribe({
       next: (res: any) => {
-        debugger;
-
         if (res.statusCode == 200 && res.data) {
           const TMPrevilegeObj = res.data.previlegeObj.filter(
             (previlege: any) => {

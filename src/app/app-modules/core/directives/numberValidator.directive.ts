@@ -19,21 +19,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import {
-  Directive,
-  ElementRef,
-  Attribute,
-  HostListener,
-  Input,
-} from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector:
-    '[allowMax][formControlName],[allowMax][formControl],[allowMax][ngModel],[allowMax]',
+    '[appAllowMax][formControlName],[appAllowMax][formControl],[appAllowMax][ngModel],[appAllowMax]',
 })
-export class NumberValidator {
-  @Input('allowMax')
+export class NumberValidatorDirective {
+  @Input('appAllowMax')
   public max!: number;
 
   constructor(private elementRef: ElementRef) {}

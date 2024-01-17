@@ -19,16 +19,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[myPassword]',
+  selector: '[appMyPassword]',
 })
-export class myPassword {
-  constructor(element: ElementRef) {}
-
+export class myPasswordDirective {
   private passwordValidator(password: any) {
-    if (password.match(/^[a-zA-Z]{1,1}[a-zA-Z0-9 $%#@!&^*()+{}\[\]-]{7,11}$/)) {
+    if (password.match(/^[a-zA-Z]{1,1}[a-zA-Z0-9 $%#@!&^*()+{}[\]-]{7,11}$/)) {
       if (password.length >= 8) {
         return 1;
       } else {

@@ -20,10 +20,10 @@
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
 import { Directive, Input } from '@angular/core';
-import { FormArray, FormGroup, NgControl } from '@angular/forms';
+import { NgControl } from '@angular/forms';
 
 @Directive({
-  selector: '[disableFormControl]',
+  selector: '[appDisableFormControl]',
 })
 export class DisableFormControlDirective {
   @Input()

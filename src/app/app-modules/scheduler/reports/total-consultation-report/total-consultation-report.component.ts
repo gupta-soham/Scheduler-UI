@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SchedulerService } from '../../shared/services/scheduler.service';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
@@ -33,7 +33,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './total-consultation-report.component.html',
   styleUrls: ['./total-consultation-report.component.css'],
 })
-export class TotalConsultationReportComponent implements OnInit {
+export class TotalConsultationReportComponent implements OnInit, DoCheck {
   totalConsultationForm!: FormGroup;
 
   languageComponent!: SetLanguageComponent;

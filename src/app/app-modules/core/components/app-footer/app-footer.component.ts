@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { HttpServiceService } from '../../services/http-service.service';
 import { SetLanguageComponent } from '../set-language.component';
 
@@ -28,7 +28,7 @@ import { SetLanguageComponent } from '../set-language.component';
   templateUrl: './app-footer.component.html',
   styleUrls: ['./app-footer.component.css'],
 })
-export class AppFooterComponent implements OnInit {
+export class AppFooterComponent implements OnInit, DoCheck {
   languageComponent!: SetLanguageComponent;
   status!: boolean;
   // today: Date;

@@ -81,7 +81,7 @@
                   <ng-template
                     [ngIf]="
                       filteredBeneficiaryList &&
-                      filteredBeneficiaryList.length == 0
+                      filteredBeneficiaryList.length === 0
                     "
                   >
                     <tr *ngFor="let row of blankTable">
@@ -134,7 +134,7 @@
                         (click)="cancelTCRequest(beneficiary)"
                         matTooltip="{{ currentLanguageSet?.cancelTc }}"
                         color="warn"
-                        [disabled]="beneficiary.specialist_flag != 1"
+                        [disabled]="beneficiary.specialist_flag !== 1"
                       >
                         {{ currentLanguageSet?.cancel }}
                       </button>

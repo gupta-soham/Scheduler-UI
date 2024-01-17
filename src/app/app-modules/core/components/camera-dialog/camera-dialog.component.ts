@@ -26,6 +26,8 @@ import {
   EventEmitter,
   ElementRef,
   ViewChild,
+  AfterViewInit,
+  DoCheck,
 } from '@angular/core';
 import { ConfirmationService } from '../../services/confirmation.service';
 import { SetLanguageComponent } from '../set-language.component';
@@ -48,7 +50,7 @@ interface Mark {
   templateUrl: './camera-dialog.component.html',
   styleUrls: ['./camera-dialog.component.css'],
 })
-export class CameraDialogComponent implements OnInit {
+export class CameraDialogComponent implements OnInit, AfterViewInit, DoCheck {
   @Output() cancelEvent = new EventEmitter();
 
   @ViewChild('myCanvas')
@@ -102,6 +104,11 @@ export class CameraDialogComponent implements OnInit {
     this.webcamImage = webcamImage;
     this.base64 = webcamImage.imageAsDataUrl;
     this.captured = true;
+  }
+  handleKeyDownRecaptureImg(event: KeyboardEvent): void {
+    if (event.key == 'Enter' || event.key == 'Spacebar' || event.key == ' ') {
+      this.recaptureImage();
+    }
   }
 
   recaptureImage(): void {

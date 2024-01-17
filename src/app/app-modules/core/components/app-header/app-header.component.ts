@@ -202,15 +202,13 @@ export class AppHeaderComponent implements OnInit {
   }
 
   redirectToSpecialistWorklist() {
-    let returnUrl!: any;
-    returnUrl = sessionStorage.getItem('tm-return');
+    const returnUrl: any = sessionStorage.getItem('tm-return');
     this.router.navigateByUrl(returnUrl);
   }
 
   returnToMMU: any;
   logout() {
-    let loginUrl!: any;
-    loginUrl = sessionStorage.getItem('tm-fallback');
+    const loginUrl: any = sessionStorage.getItem('tm-fallback');
     this.auth.logout().subscribe({
       next: (res: any) => {
         this.auth.removeExternalSessionData();
@@ -221,6 +219,12 @@ export class AppHeaderComponent implements OnInit {
         this.router.navigateByUrl(loginUrl);
       },
     });
+  }
+
+  handleKeyDownSwymed(event: KeyboardEvent): void {
+    if (event.key == 'Enter' || event.key == 'Spacebar' || event.key == ' ') {
+      this.getSwymedLogout();
+    }
   }
 
   getSwymedLogout() {
@@ -252,7 +256,6 @@ export class AppHeaderComponent implements OnInit {
           this.constructAPIAndUIDetails(res.data);
         }
       },
-      error: (err) => {},
     });
   }
   constructAPIAndUIDetails(apiVersionAndCommitDetails: any) {

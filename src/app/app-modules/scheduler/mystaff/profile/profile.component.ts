@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck } from '@angular/core';
 import { SchedulerService } from '../../shared/services';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
@@ -31,7 +31,7 @@ import { MatTabChangeEvent } from '@angular/material/tabs';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent implements OnInit, OnChanges {
+export class ProfileComponent implements OnInit, OnChanges, DoCheck {
   specialistData: any;
   currentLanguageSet: any;
   languageComponent!: SetLanguageComponent;

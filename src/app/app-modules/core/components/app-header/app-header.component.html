@@ -27,7 +27,11 @@
           class="logout cursorPointer"
           matTooltip="{{ currentLanguageSet?.logout }}"
         >
-          <a (click)="getSwymedLogout()">
+          <a
+            (click)="getSwymedLogout()"
+            tabindex="0"
+            (keydown)="handleKeyDownSwymed($event)"
+          >
             <span class="logoutIcon"></span>
             <span
               style="color: #ffffff"

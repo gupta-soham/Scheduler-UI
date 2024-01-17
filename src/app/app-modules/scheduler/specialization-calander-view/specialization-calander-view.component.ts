@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit } from '@angular/core';
 import { SchedulerService } from '../shared/services/scheduler.service';
 import { SetLanguageComponent } from '../../core/components/set-language.component';
 import { HttpServiceService } from '../../core/services/http-service.service';
@@ -29,7 +29,7 @@ import { HttpServiceService } from '../../core/services/http-service.service';
   templateUrl: './specialization-calander-view.component.html',
   styleUrls: ['./specialization-calander-view.component.css'],
 })
-export class SpecializationCalanderViewComponent implements OnInit {
+export class SpecializationCalanderViewComponent implements OnInit, DoCheck {
   daySlots: any[] = [];
   eventWithResource: any[] = [];
   viewDate: any;

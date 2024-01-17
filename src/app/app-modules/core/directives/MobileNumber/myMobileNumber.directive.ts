@@ -19,15 +19,14 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[myMobileNumber]',
+  selector: '[appMyMobileNumber]',
 })
-export class myMobileNumber {
-  constructor() {}
+export class MyMobileNumberDirective {
   @HostListener('keypress', ['$event']) onKeyPress(ev: any) {
-    const regex = new RegExp(/^[a-zA-Z~!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/);
+    const regex = new RegExp(/^[a-zA-Z~!@#$%^&*()_+\-=[]{};':"\\|,.<>\/?]*$/);
     const key = String.fromCharCode(!ev.charCode ? ev.which : ev.charCode);
     if (regex.test(key)) {
       ev.preventDefault();

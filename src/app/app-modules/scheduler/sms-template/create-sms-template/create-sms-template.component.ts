@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ConfirmationService } from '../../../core/services/confirmation.service';
 import { SchedulerService } from '../../shared/services';
@@ -33,7 +33,7 @@ import { HttpServiceService } from 'src/app/app-modules/core/services/http-servi
   templateUrl: './create-sms-template.component.html',
   styleUrls: ['./create-sms-template.component.css'],
 })
-export class CreateSmsTemplateComponent implements OnInit {
+export class CreateSmsTemplateComponent implements OnInit, DoCheck {
   @Input()
   fullSMSTemplate: any;
   languageComponent!: SetLanguageComponent;
@@ -45,6 +45,11 @@ export class CreateSmsTemplateComponent implements OnInit {
     'value',
     'action',
   ];
+  smsTemplateCreationForm!: FormGroup;
+  masterSMSType: any = [];
+  parameters: any = [];
+  templateView = false;
+  heading: any;
 
   constructor(
     private fb: FormBuilder,
@@ -54,17 +59,16 @@ export class CreateSmsTemplateComponent implements OnInit {
     private location: Location,
     private activatedRoute: ActivatedRoute,
   ) {}
-  smsTemplateCreationForm!: FormGroup;
+  ngDoCheck(): void {
+    throw new Error('Method not implemented.');
+  }
 
-  masterSMSType: any[] = [];
-  parameters: any[] = [];
-  templateView = false;
   ngOnInit() {
     this.smsTemplateCreationForm = this.createsmsTemplateCreationForm();
     this.getSMSType();
     this.fetchLanguageResponse();
   }
-  heading: any;
+
   getSMSType(view?: string) {
     this.schedulerService.getSMSType().subscribe({
       next: (res: any) => {
@@ -227,7 +231,6 @@ export class CreateSmsTemplateComponent implements OnInit {
     const indexToRemove = this.mappedSMSParameter.findIndex(
       (item) => item.sNo === sNo,
     );
-
     if (indexToRemove !== -1) {
       this.mappedSMSParameter.splice(indexToRemove, 1);
       this.parameters.push(parameter.smsParameterName);
@@ -292,7 +295,7 @@ export class CreateSmsTemplateComponent implements OnInit {
   }
 
   //AN40085822 27/9/2021 Integrating Multilingual Functionality --Start--
-  ngDoCheck() {
+  DoCheck() {
     this.fetchLanguageResponse();
     if (
       this.currentLanguageSet !== undefined &&

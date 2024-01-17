@@ -14,7 +14,13 @@
       <div *ngIf="webcamInitError">
         Webcam initialization failed: {{ webcamInitError.message }}
       </div>
-      <a (click)="recaptureImage()" *ngIf="captured">Retry</a>
+      <a
+        (click)="recaptureImage()"
+        tabindex="0"
+        (keydown)="handleKeyDownRecaptureImg($event)"
+        *ngIf="captured"
+        >Retry</a
+      >
       <img id="photo" [src]="base64" alt="base64" *ngIf="captured" />
     </div>
   </mat-dialog-content>

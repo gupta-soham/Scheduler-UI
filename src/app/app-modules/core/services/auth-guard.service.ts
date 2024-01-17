@@ -33,13 +33,11 @@ export class AuthGuard {
     private router: Router,
     public httpServiceService: HttpServiceService,
     private route: ActivatedRoute,
-  ) {}
-
-  // For setting language
-  ngOnInit() {
+  ) {
     this.fetchLanguageResponse();
   }
 
+  // For setting language
   canActivate(route: any, state: any) {
     if (sessionStorage.getItem('tm-isAuthenticated')) {
       return true;
@@ -52,9 +50,9 @@ export class AuthGuard {
   }
 
   // AV40085804 27/09/2021 Integrating Multilingual Functionality -----Start-----
-  ngDoCheck() {
-    this.fetchLanguageResponse();
-  }
+  // ngDoCheck() {
+  //   this.fetchLanguageResponse();
+  // }
 
   fetchLanguageResponse() {
     this.languageComponent = new SetLanguageComponent(this.httpServiceService);

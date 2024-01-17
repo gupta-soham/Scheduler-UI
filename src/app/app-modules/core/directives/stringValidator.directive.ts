@@ -19,20 +19,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see https://www.gnu.org/licenses/.
  */
-import {
-  Directive,
-  ElementRef,
-  Attribute,
-  HostListener,
-  Input,
-} from '@angular/core';
-import { AbstractControl, ValidatorFn } from '@angular/forms';
-
+import { Directive, HostListener, Input } from '@angular/core';
 @Directive({
   selector:
-    '[allowText][formControlName],[allowText][formControl],[allowText][ngModel],[allowText]',
+    '[appAllowText][formControlName],[appAllowText][formControl],[appAllowText][ngModel],[appAllowText]',
 })
-export class StringValidator {
+export class StringValidatorDirective {
   @Input()
   allowText!: string;
 
@@ -50,9 +42,6 @@ export class StringValidator {
 
   lastValue = null;
   result!: boolean;
-
-  constructor(private elementRef: ElementRef) {}
-
   validate(input: any) {
     const patternCode = this.allowText.trim();
 
