@@ -200,8 +200,26 @@ export class AppHeaderComponent implements OnInit {
           return this.roles.includes(item.role);
         });
       }
-      console.log(' this.filteredNavigation', this.filteredNavigation);
     }
+    // if (this.showRoles) {
+    //   // roles!: string[];
+
+    //  const tmRoles = localStorage.getItem('roles');
+    //  this.roles = tmRoles !== null ? JSON.parse(tmRoles) : [];
+
+    //   // const tmRoles = localStorage.getItem('roles');
+    //   console.log("tmRoles", tmRoles);
+    //   // this.roles = tmRoles !== null ? JSON.parse(tmRoles) : String;
+    //   console.log("this.roles1", this.roles);
+    //   if (this.roles) {
+    //     console.log("this.roles", this.roles);
+    //     console.log("this.navigation", this.navigation);
+    //     this.filteredNavigation = this.navigation.filter((item: any) => {
+    //       return this.roles.includes(item.role);
+    //     });
+    //   }
+    //   console.log(' this.filteredNavigation', this.filteredNavigation);
+    // }
   }
 
   DataSync() {

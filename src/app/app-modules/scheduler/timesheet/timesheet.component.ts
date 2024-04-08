@@ -95,6 +95,12 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
     }
   }
 
+  // openFromIcon(timepicker: { open: () => void }) {
+  //   if (!this.configuredFromTime.disabled) {
+  //     timepicker.open();
+  //   }
+  // }
+
   initializeCalender() {
     this.createAvailabiltyForm();
     this.initDayList();
@@ -309,6 +315,21 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
       eventSources: eventSources || [],
       // events: [{ title: 'Meeting', start: new Date() }],
     } as any;
+
+    // this.calendarOptions = {
+    //   themeSystem: 'bootstrap3',
+    //   editable: false,
+    //   eventLimit: true,
+    //   header: {
+    //     left: 'prev,next',
+    //     center: 'title',
+    //     right: 'month,listMonth',
+    //   },
+    //   displayEventEnd: true,
+    //   displayEventTime: true,
+    //   timeFormat: 'HH:mm',
+    //   eventSources: eventSources || [],
+    // } as any;
   }
   handleNavigation(startDate: string, endDate: string) {
     const tempendDate = new Date(endDate);
