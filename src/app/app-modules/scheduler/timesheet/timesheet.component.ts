@@ -95,12 +95,6 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
     }
   }
 
-  // openFromIcon(timepicker: { open: () => void }) {
-  //   if (!this.configuredFromTime.disabled) {
-  //     timepicker.open();
-  //   }
-  // }
-
   initializeCalender() {
     this.createAvailabiltyForm();
     this.initDayList();
@@ -138,68 +132,6 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
     });
   }
 
-  // submitAvailabilityForm(availabiltyForm: any) {
-  //   const availabilityFormValue: any = JSON.parse(
-  //     JSON.stringify(this.availabiltyForm.value),
-  //   );
-
-  //   const fromDate = new Date(availabilityFormValue.configuredFromDate);
-  //   fromDate.setHours(5, 30, 0, 0);
-  //   availabilityFormValue.configuredFromDate = fromDate;
-  //   console.log('fromDate', fromDate);
-  //   const fromTime = availabilityFormValue.configuredFromTime;
-  //   console.log('fromTime', fromTime);
-  //   const combinedDateTime = moment(
-  //     `${fromDate.toISOString().split('T')[0]} ${fromTime}`,
-  //     'YYYY-MM-DD hh:mm A',
-  //   );
-  //   console.log('combinedDateTime', combinedDateTime);
-  //   const formattedFromTime = combinedDateTime.format(
-  //     'YYYY-MM-DDTHH:mm:ss.SSS[Z]',
-  //   );
-  //   console.log('formattedFromTime', formattedFromTime);
-  //   availabilityFormValue.configuredFromTime = formattedFromTime;
-  //   const toDate = new Date(availabilityFormValue.configuredToDate);
-  //   toDate.setHours(5, 30, 0, 0);
-  //   availabilityFormValue.configuredToDate = toDate;
-
-  //   availabilityFormValue.ExcludeDays = this.getExcludedDays(this.dayList);
-
-  //   availabilityFormValue.createdBy = localStorage.getItem('tm-userName');
-  //   availabilityFormValue.userID = this.selectedSpecialist.userID;
-
-  //   if (availabilityFormValue.isAvailability === 'true') {
-  //     const toTime = availabilityFormValue.configuredToTime;
-  //     console.log('toTime', toTime);
-  //     const combinedDateToTime = moment(
-  //       `${toDate.toISOString().split('T')[0]} ${toTime}`,
-  //       'YYYY-MM-DD hh:mm A',
-  //     );
-  //     console.log('combinedDateTime', combinedDateToTime);
-  //     const formattedToTime = combinedDateToTime.format(
-  //       'YYYY-MM-DDTHH:mm:ss.SSS[Z]',
-  //     );
-  //     console.log('formattedToTime', formattedToTime);
-  //     availabilityFormValue.configuredToTime = formattedToTime;
-  //     this.markAvailability(availabiltyForm, availabilityFormValue);
-  //   } else {
-  //     const toTime = availabilityFormValue.configuredToTime;
-  //     console.log('toTimeelse', toTime);
-  //     const combinedDateToTime = moment(
-  //       `${toDate.toISOString().split('T')[0]} ${toTime}`,
-  //       'YYYY-MM-DD hh:mm A',
-  //     );
-  //     console.log('combinedDateToTimeelse', combinedDateToTime);
-  //     const formattedToTime = combinedDateTime.format(
-  //       'YYYY-MM-DDTHH:mm:ss.SSS[Z]',
-  //     );
-  //     console.log('formattedToTimeelse', formattedToTime);
-  //     availabilityFormValue.configuredToTime = formattedToTime;
-  //     availabilityFormValue.ExcludeDays = undefined;
-  //     availabilityFormValue.toDate = undefined;
-  //     this.markNonAvailability(availabiltyForm, availabilityFormValue);
-  //   }
-  // }
   submitAvailabilityForm(availabiltyForm: any) {
     const availabilityFormValue: any = JSON.parse(
       JSON.stringify(this.availabiltyForm.value),
@@ -377,21 +309,6 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
       eventSources: eventSources || [],
       // events: [{ title: 'Meeting', start: new Date() }],
     } as any;
-
-    // this.calendarOptions = {
-    //   themeSystem: 'bootstrap3',
-    //   editable: false,
-    //   eventLimit: true,
-    //   header: {
-    //     left: 'prev,next',
-    //     center: 'title',
-    //     right: 'month,listMonth',
-    //   },
-    //   displayEventEnd: true,
-    //   displayEventTime: true,
-    //   timeFormat: 'HH:mm',
-    //   eventSources: eventSources || [],
-    // } as any;
   }
   handleNavigation(startDate: string, endDate: string) {
     const tempendDate = new Date(endDate);
