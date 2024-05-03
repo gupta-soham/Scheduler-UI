@@ -45,7 +45,8 @@ export class AppHeaderComponent implements OnInit {
   servicePoint: any;
   userName: any;
   isAuthenticated!: boolean;
-  roles!: string;
+  roles!: string[];
+  // roles!: string;
   filteredNavigation: any;
   navigation: any;
   reportNavigation: any;
@@ -70,9 +71,14 @@ export class AppHeaderComponent implements OnInit {
   }
 
   fetchLanguageSet() {
-    this.httpServiceService.fetchLanguageSet().subscribe((languageRes) => {
-      this.languageArray = languageRes;
-      this.getLanguage();
+    this.httpServiceService.fetchLanguageSet().subscribe((languageRes: any) => {
+      console.log('languageRes', languageRes);
+      if (languageRes && Array.isArray(languageRes.data)) {
+        this.languageArray = languageRes.data;
+        this.getLanguage();
+      }
+      // this.languageArray = languageRes;
+      // this.getLanguage();
     });
     console.log('language array' + this.languageArray);
   }
@@ -184,10 +190,11 @@ export class AppHeaderComponent implements OnInit {
         ],
       },
     ];
-
     if (this.showRoles) {
-      const tmRoles = localStorage.getItem('roles');
-      this.roles = tmRoles !== null ? JSON.parse(tmRoles) : String;
+      const role: any = localStorage.getItem('tm-roles');
+      console.log('role', role);
+      this.roles = JSON.parse(role);
+      console.log('roles', this.roles);
       if (this.roles) {
         this.filteredNavigation = this.navigation.filter((item: any) => {
           return this.roles.includes(item.role);
@@ -203,41 +210,30 @@ export class AppHeaderComponent implements OnInit {
 
   redirectToSpecialistWorklist() {
     const returnUrl: any = sessionStorage.getItem('tm-return');
-    this.router.navigateByUrl(returnUrl);
+    window.location.href = returnUrl;
+    // this.router.navigateByUrl(returnUrl);
   }
 
   returnToMMU: any;
   logout() {
     const loginUrl: any = sessionStorage.getItem('tm-fallback');
-    this.auth.logout().subscribe({
-      next: (res: any) => {
+    this.auth.logout().subscribe(
+      (res: any) => {
         this.auth.removeExternalSessionData();
-        this.router.navigateByUrl(loginUrl);
+        window.location.href = loginUrl;
       },
-      error: (error: any) => {
+      (error) => {
         this.auth.removeExternalSessionData();
-        this.router.navigateByUrl(loginUrl);
+        window.location.href = loginUrl;
       },
-    });
+    );
   }
-
-  handleKeyDownSwymed(event: KeyboardEvent): void {
-    if (
-      event.key === 'Enter' ||
-      event.key === 'Spacebar' ||
-      event.key === ' '
-    ) {
-      this.getSwymedLogout();
-    }
-  }
-
   getSwymedLogout() {
     this.auth.getSwymedLogout().subscribe((res: any) => {
       window.location.href = res.data.response;
       this.logout();
     });
   }
-
   commitDetailsUI: any;
   versionUI: any;
   getUIVersionAndCommitDetails() {

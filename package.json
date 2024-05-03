@@ -12,12 +12,13 @@
     "prepare": "husky install"
   },
   "lint-staged": {
-    "src/**/*.{ts,css,html}": [
+    "src/**/*.{ts,html}": [
       "eslint --fix"
     ]
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/datetime-picker": "^16.0.1",
     "@angular/animations": "^16.2.0",
     "@angular/cdk": "^16.2.12",
     "@angular/common": "^16.2.0",
@@ -30,6 +31,7 @@
     "@angular/router": "^16.2.0",
     "@fullcalendar/angular": "^6.1.10",
     "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
     "@types/file-saver": "^2.0.7",
     "bootstrap": "^5.3.2",
     "chart.js": "^4.4.1",
@@ -37,8 +39,9 @@
     "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",
     "moment": "^2.29.4",
+    "moment-timezone": "^0.5.45",
     "ng2-charts": "^5.0.4",
-    "ngx-bootstrap": "^11.0.0",
+    "ngx-mat-timepicker": "^17.1.0",
     "ngx-webcam": "^0.4.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

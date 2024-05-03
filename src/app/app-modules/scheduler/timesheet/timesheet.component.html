@@ -5,7 +5,6 @@
         <full-calendar
           *ngIf="calendarOptions"
           [options]="calendarOptions"
-          (dateClick)="clickButton($event)"
         ></full-calendar>
       </mat-card>
     </div>
@@ -80,7 +79,9 @@
               </mat-radio-group>
             </div>
             <div class="col-xs-12 m-t-10 box">
-              <mat-form-field class="input-full-width">
+              <mat-form-field
+                class="input-full-width mat_form_field_background_color_table"
+              >
                 <mat-label>{{ currentLanguageSet?.fromDate }}</mat-label>
                 <input
                   matInput
@@ -101,8 +102,10 @@
               </mat-form-field>
             </div>
             <div class="col-xs-12 box" [hidden]="isAvailability === 'false'">
-              <mat-form-field class="input-full-width">
-                <mat-label>{{ currentLanguageSet?.inventory?.date }}</mat-label>
+              <mat-form-field
+                class="input-full-width mat_form_field_background_color_table"
+              >
+                <mat-label>{{ currentLanguageSet?.toDate }}</mat-label>
                 <input
                   matInput
                   [matDatepicker]="configuredToDatePicker"
@@ -122,32 +125,39 @@
               </mat-form-field>
             </div>
             <div class="col-xs-12 box">
-              <mat-form-field class="input-full-width">
+              <mat-form-field
+                class="input-full-width mat_form_field_background_color_table"
+              >
                 <mat-label>{{ currentLanguageSet?.fromTime }}</mat-label>
                 <input
+                  type="text"
                   matInput
-                  [matDatepicker]="configuredFromTimePicker"
-                  type="time"
+                  [ngxMatTimepicker]="timepicker"
                   class="input-full-width"
                   formControlName="configuredFromTime"
                   name="configuredFromTime"
                   required
                 />
-                <mat-datepicker-toggle
-                  matPrefix
-                  [for]="configuredFromTimePicker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #configuredFromTimePicker></mat-datepicker>
+                <mat-icon matPrefix [ngxMatTimepicker]="timepicker"
+                  >schedule</mat-icon
+                >
               </mat-form-field>
+              <ngx-mat-timepicker
+                #timepicker
+                [enableKeyboardInput]="true"
+                [max]="maxTime"
+                [min]="minTime"
+              ></ngx-mat-timepicker>
             </div>
             <div class="col-xs-12 box">
-              <mat-form-field class="input-full-width">
+              <mat-form-field
+                class="input-full-width mat_form_field_background_color_table"
+              >
                 <mat-label>{{ currentLanguageSet?.toTime }}</mat-label>
                 <input
+                  type="text"
                   matInput
-                  [matDatepicker]="configuredToTimePicker"
-                  type="time"
-                  class="input-full-width"
+                  [ngxMatTimepicker]="toTimepicker"
                   formControlName="configuredToTime"
                   name="configuredToTime"
                   [min]="
@@ -158,12 +168,16 @@
                   "
                   required
                 />
-                <mat-datepicker-toggle
-                  matPrefix
-                  [for]="configuredToTimePicker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #configuredToTimePicker></mat-datepicker>
+                <mat-icon matPrefix [ngxMatTimepicker]="toTimepicker"
+                  >schedule</mat-icon
+                >
               </mat-form-field>
+              <ngx-mat-timepicker
+                #toTimepicker
+                [enableKeyboardInput]="true"
+                [max]="maxTime"
+                [min]="minTime"
+              ></ngx-mat-timepicker>
             </div>
             <div class="col-xs-12 day-list" *ngIf="isAvailability !== 'false'">
               <button
@@ -181,9 +195,10 @@
             <div class="col-xs-12">
               <button
                 type="button"
+                style="margin: 10px; width: 96.5%"
                 mat-raised-button
-                color="accent"
-                class="input-full-width"
+                color="primary"
+                class="input-full-width mat_success"
                 [disabled]="
                   availabiltyForm.pristine ||
                   (availabiltyForm.dirty && availabiltyForm.invalid)
