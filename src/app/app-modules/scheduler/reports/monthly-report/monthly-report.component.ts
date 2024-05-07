@@ -280,7 +280,6 @@ export class MonthlyReportComponent implements OnInit, DoCheck {
       this.confirmationService.alert(this.currentLanguageSet.norecordfound);
     }
   }
-
   modifyHeader(headers: any, i: any) {
     let modifiedHeader: string;
     modifiedHeader = headers[i - 65]

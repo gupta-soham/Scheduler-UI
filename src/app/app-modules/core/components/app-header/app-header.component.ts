@@ -202,6 +202,39 @@ export class AppHeaderComponent implements OnInit {
       }
       console.log(' this.filteredNavigation', this.filteredNavigation);
     }
+
+    // if (this.showRoles) {
+    //   const role: any = localStorage.getItem('role');
+    //   console.log('role', role);
+    //   this.roles = JSON.parse(role);
+    //   console.log('this.roles', this.roles);
+    //   console.log("this.navigation", this.navigation);
+    //   if (this.roles !== undefined && this.roles !== null) {
+    //     this.filteredNavigation = this.navigation.filter((item: any) => {
+    //       return this.roles.includes(item.role);
+    //     });
+    //   }
+    //   console.log("filteredNavigation", this.filteredNavigation);
+    // }
+    // if (this.showRoles) {
+    //   // roles!: string[];
+
+    //  const tmRoles = localStorage.getItem('roles');
+    //  this.roles = tmRoles !== null ? JSON.parse(tmRoles) : [];
+
+    //   // const tmRoles = localStorage.getItem('roles');
+    //   console.log("tmRoles", tmRoles);
+    //   // this.roles = tmRoles !== null ? JSON.parse(tmRoles) : String;
+    //   console.log("this.roles1", this.roles);
+    //   if (this.roles) {
+    //     console.log("this.roles", this.roles);
+    //     console.log("this.navigation", this.navigation);
+    //     this.filteredNavigation = this.navigation.filter((item: any) => {
+    //       return this.roles.includes(item.role);
+    //     });
+    //   }
+    //   console.log(' this.filteredNavigation', this.filteredNavigation);
+    // }
   }
 
   DataSync() {
