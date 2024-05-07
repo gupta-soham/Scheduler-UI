@@ -106,11 +106,6 @@ export class CameraDialogComponent implements OnInit, DoCheck {
       cameraType: 'back',
     };
   }
-  handleKeyDownRecaptureImg(event: KeyboardEvent): void {
-    if (event.key == 'Enter' || event.key == 'Spacebar' || event.key == ' ') {
-      this.recaptureImage();
-    }
-  }
 
   onSuccess(stream: any) {
     console.log('capturing video stream');
