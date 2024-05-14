@@ -29,7 +29,7 @@ const COMMON_API_OPEN = '<%= COMMON_API_BASE %>';
 const COMMON_API = '<%= COMMON_API_BASE %>';
 const SCHEDULER_API =  '<%= SCHEDULER_API_BASE %>';
 const TM_API = '<%= TM_API_BASE %>';
-const MMU_API = `http://${IP}:8080/mmuapi-v1.0/`;
+const MMU_API = `<%= MMU_API_BASE %>`;
 export const environment = {
   production: true,
 
