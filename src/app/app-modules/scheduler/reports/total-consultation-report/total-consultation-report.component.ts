@@ -155,116 +155,104 @@ export class TotalConsultationReportComponent implements OnInit, DoCheck {
     });
     this.exportToxlsx(criteria);
   }
+
   exportToxlsx(criteria: any) {
-    if (criteria.length > 0) {
-      const criteriaArray = criteria.filter(function (obj: any) {
-        for (const key in obj) {
-          if (obj[key] === null) {
-            obj[key] = '';
-          }
-        }
-        return obj;
-      });
-      if (criteriaArray.length !== 0) {
-        this.criteriaHead = Object.keys(criteriaArray[0]);
-        console.log('this.criteriaHead', this.criteriaHead);
-      }
-    }
-    if (this.totalConsultationList.length > 0) {
-      const array = this.totalConsultationList.filter(function (obj: any) {
-        for (const key in obj) {
-          if (obj[key] === null) {
-            obj[key] = '';
-          }
-        }
-        return obj;
-      });
-      if (array.length !== 0) {
-        const head = Object.keys(array[0]);
-        console.log('head', head);
-        const wb_name = 'Total Consultation Report';
-
-        // below code added to modify the headers
-
-        let i = 65; // starting from 65 since it is the ASCII code of 'A'.
-        let count = 0;
-        while (i < head.length + 65) {
-          let j;
-          if (count > 0) {
-            j = i - 26 * count;
-          } else {
-            j = i;
-          }
-          const cellPosition = String.fromCharCode(j);
-          let finalCellName: any;
-          if (count === 0) {
-            finalCellName = cellPosition + '1';
-            console.log(finalCellName);
-          } else {
-            const newcellPosition = String.fromCharCode(64 + count);
-            finalCellName = newcellPosition + cellPosition + '1';
-            console.log(finalCellName);
-          }
-          const newName = this.modifyHeader(head, i);
-          // delete report_worksheet[finalCellName].w; report_worksheet[finalCellName].v = newName;
-          i++;
-          if (i === 91 + count * 26) {
-            // i = 65;
-            count++;
-          }
-        }
-        // --------end--------
-
-        const workbook = new ExcelJS.Workbook();
-        const criteria_worksheet = workbook.addWorksheet('Criteria');
-        const report_worksheet = workbook.addWorksheet('Report');
-
-        report_worksheet.addRow(head);
-        criteria_worksheet.addRow(this.criteriaHead);
-
-        // Add data
-        criteria.forEach((row: { [x: string]: any }) => {
-          const rowData: any[] = [];
-          this.criteriaHead.forEach((header: string | number) => {
-            rowData.push(row[header]);
-          });
-          criteria_worksheet.addRow(rowData);
-        });
-
-        this.totalConsultationList.forEach((row: { [x: string]: any }) => {
-          const rowData: any[] = [];
-          head.forEach((header) => {
-            rowData.push(row[header]);
-          });
-          report_worksheet.addRow(rowData);
-        });
-
-        // Write to file
-        workbook.xlsx.writeBuffer().then((buffer: any) => {
-          const blob = new Blob([buffer], {
-            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-          });
-          saveAs(blob, wb_name + '.xlsx');
-          if (navigator.msSaveBlob) {
-            navigator.msSaveBlob(blob, wb_name);
-          } else {
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.setAttribute('visibility', 'hidden');
-            link.download = wb_name.replace(/ /g, '_') + '.xlsx';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          }
-        });
-      }
-      this.confirmationService.alert(
-        this.currentLanguageSet.totalConsultationReportDownloaded,
-        'success',
-      );
-    } else {
+    if (criteria.length === 0) {
       this.confirmationService.alert(this.currentLanguageSet.norecordfound);
+      return;
     }
+
+    const cleanNullValues = (obj: any) => {
+      for (const key in obj) {
+        if (obj[key] === null) {
+          obj[key] = '';
+        }
+      }
+      return obj;
+    };
+
+    const criteriaArray = criteria.map(cleanNullValues);
+    this.criteriaHead = Object.keys(criteriaArray[0]);
+
+    if (this.totalConsultationList.length === 0) {
+      this.confirmationService.alert(this.currentLanguageSet.norecordfound);
+      return;
+    }
+
+    const array = this.totalConsultationList.map(cleanNullValues);
+    const head = Object.keys(array[0]);
+    const wb_name = 'Total Consultation Report';
+
+    // Modify headers
+    let i = 65;
+    let count = 0;
+    while (i < head.length + 65) {
+      let j;
+      if (count > 0) {
+        j = i - 26 * count;
+      } else {
+        j = i;
+      }
+      const cellPosition = String.fromCharCode(j);
+      let finalCellName: any;
+      if (count === 0) {
+        finalCellName = cellPosition + '1';
+        console.log(finalCellName);
+      } else {
+        const newcellPosition = String.fromCharCode(64 + count);
+        finalCellName = newcellPosition + cellPosition + '1';
+        console.log(finalCellName);
+      }
+      this.modifyHeader(head, i);
+      i++;
+      if (i === 91 + count * 26) {
+        count++;
+      }
+    }
+
+    const workbook = new ExcelJS.Workbook();
+    const criteria_worksheet = workbook.addWorksheet('Criteria');
+    const report_worksheet = workbook.addWorksheet('Report');
+
+    report_worksheet.addRow(head);
+    criteria_worksheet.addRow(this.criteriaHead);
+
+    // Add data
+    criteria.forEach((row: { [x: string]: any }) => {
+      const rowData: any[] = this.criteriaHead.map(
+        (header: string | number) => row[header],
+      );
+      criteria_worksheet.addRow(rowData);
+    });
+
+    this.totalConsultationList.forEach((row: { [x: string]: any }) => {
+      const rowData: any[] = head.map((header) => row[header]);
+      report_worksheet.addRow(rowData);
+    });
+
+    // Write to file
+    workbook.xlsx.writeBuffer().then((buffer) => {
+      const blob = new Blob([buffer], {
+        type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      });
+      saveAs(blob, wb_name + '.xlsx');
+      if (navigator.msSaveBlob) {
+        navigator.msSaveBlob(blob, wb_name);
+      } else {
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.setAttribute('visibility', 'hidden');
+        link.download = wb_name.replace(/ /g, '_') + '.xlsx';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    });
+
+    this.confirmationService.alert(
+      this.currentLanguageSet.totalConsultationReportDownloaded,
+      'success',
+    );
   }
 
   modifyHeader(headers: any, i: any) {
