@@ -145,7 +145,7 @@
                   <td
                     mat-cell
                     *matCellDef="let beneficiary"
-                    (click)="patientImageView(beneficiary.beneficiaryRegID)"
+                    (keyup)="patientImageView(beneficiary.beneficiaryRegID)"
                     matTooltip="{{ currentLanguageSet?.image }}"
                   >
                     <img

@@ -27,7 +27,6 @@
 const commonIP = 'http://183.82.107.186:8080/';
 const tmIP = 'http://183.82.107.186:8080/';
 const schedulerIP = 'http://183.82.107.186:8080/';
-const IP = '183.82.107.186';
 
 // Without API MAN Configuration
 const COMMON_API_OPEN = `${commonIP}commonapi-v1.0/`;
@@ -36,7 +35,6 @@ const SCHEDULER_API = `${schedulerIP}schedulerapi-v1.0/`;
 const TM_API = `${tmIP}tmapi-v1.0/`;
 
 // const TM_API = `${tmIP}tmapi-v1.0/`;
-const MMU_API = `http://${IP}:8080/mmuapi-v1.0/`;
 
 export const environment = {
   production: false,

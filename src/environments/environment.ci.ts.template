@@ -29,7 +29,6 @@ const COMMON_API_OPEN = '<%= COMMON_API_BASE %>';
 const COMMON_API = '<%= COMMON_API_BASE %>';
 const SCHEDULER_API =  '<%= SCHEDULER_API_BASE %>';
 const TM_API = '<%= TM_API_BASE %>';
-
 export const environment = {
   production: true,
 
@@ -78,7 +77,7 @@ export const environment = {
   getFullSMSTemplateUrl: `${COMMON_API}sms/getFullSMSTemplate`,
   saveSMSTemplateUrl: `${COMMON_API}sms/saveSMSTemplate`,
   updateSMSTemplateUrl: `${COMMON_API}sms/updateSMSTemplate`,
-  getSwymedLogoutUrl: `${TM_API}swymed/logout`,
+  getSwymedLogoutUrl: `${TM_API}videoConsultation/logout`,
   getChiefComplaintReportUrl: `${TM_API}TMReport/chiefcomplaintreport`,
   getTotalConsultationReportsUrl: `${TM_API}TMReport/TotalConsultationReport`,
   getConsultantReportUrl: `${TM_API}TMReport/ConsultationReport`,
@@ -87,6 +86,6 @@ export const environment = {
   licenseUrl: `${COMMON_API}license.html`,
   apiVersionUrl: `${SCHEDULER_API}version`,
 
-   // Language List
-   getLanguageList: `${COMMON_API}beneficiary/getLanguageList`
+  // Language List
+  getLanguageList: `${COMMON_API}beneficiary/getLanguageList`
 };

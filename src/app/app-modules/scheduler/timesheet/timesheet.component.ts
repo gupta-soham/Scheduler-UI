@@ -91,7 +91,6 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
   ngOnChanges() {
     if (this.getChangedTab) {
       this.initializeCalender();
-      // this.calendarOptions = null;
     }
   }
 
@@ -213,11 +212,7 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
           );
           availabiltyForm.reset();
           availabiltyForm.markAsPristine();
-          // this.calendarOptions = undefined;
           this.getUserDesignation(date);
-          // this.initDayList();
-          // this.ucCalendar.fullCalendar('removeEventSources');
-          // this.getMonthEvents(new Date());
         } else {
           this.confirmationService.alert(res.errorMessage, 'warn');
         }
@@ -244,10 +239,8 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
             );
             availabiltyForm.reset();
             availabiltyForm.markAsPristine();
-            // this.initializeCalender();
             this.getUserDesignation(date);
             this.initDayList();
-            // this.ucCalendar.fullCalendar('removeEventSources');
             this.getMonthEvents(new Date());
           } else {
             this.confirmationService.alert(res.errorMessage, 'warn');
@@ -307,7 +300,6 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
       timeZone: 'UTC',
       timeFormat: 'HH:mm',
       eventSources: eventSources || [],
-      // events: [{ title: 'Meeting', start: new Date() }],
     } as any;
   }
   handleNavigation(startDate: string, endDate: string) {
@@ -326,9 +318,7 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
         if (res.statusCode === 200 && res.data) {
           const eventSourceList = res.data;
           const eventSources = this.mapResponseToEventSources(eventSourceList);
-          eventSources.forEach((eventSource) => {
-            // this.ucCalendar.fullCalendar('addEventSource', eventSource);
-          });
+          eventSources.forEach((eventSource) => {});
         } else {
           this.confirmationService.alert(res.errorMessage, 'warn');
         }
@@ -344,7 +334,6 @@ export class TimesheetComponent implements OnInit, OnChanges, DoCheck {
   }
 
   getSpecialist() {
-    //  this.ucCalendar.fullCalendar('removeEventSources');
     this.selectedSpecialist = undefined;
     this.availabiltyForm.reset();
 

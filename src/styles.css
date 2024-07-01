@@ -167,19 +167,6 @@ hr {
   background: darkslategray;
   filter: blur(8px);
 }
-
-/* .fc .fc-daygrid-event-harness-abs {
-  left: 0px;
-  position: absolute;
-  right: 0px;
-  top: 0px;
-  width: fit-content !important;
-
-}
-.fc .fc-daygrid-event-harness {
-  position: relative;
-  width: fit-content !important;
-} */
 .fc .fc-toolbar.fc-header-toolbar {
    margin: 10px !important;
 }

@@ -20,7 +20,6 @@ import { NgChartsModule } from 'ng2-charts';
 import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { HttpInterceptorService } from './app-modules/core/services/http-interceptor.service';
 import { FullCalendarModule } from '@fullcalendar/angular';
-// import { NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 
 const lang = 'en-US';
@@ -34,7 +33,6 @@ const lang = 'en-US';
     MatFormFieldModule,
     MatDialogModule,
     FullCalendarModule,
-    // FullCalendarComponent,
     MatDatepickerModule,
     MatInputModule,
     MatTableModule,
