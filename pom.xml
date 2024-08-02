@@ -4,10 +4,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<!-- @Author : Sunil K Sundaram @Date : 21-May-17 @Email : sunil.ks@gmail.com -->
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.iemr.scheduler-ui-next</groupId>
-	<artifactId>SCHEDULER-UI-NEXT</artifactId>
+	<groupId>com.iemr.scheduler-ui</groupId>
+	<artifactId>SCHEDULER-UI</artifactId>
 	<version>1.0</version>
-	<name>SCHEDULER-UI-NEXT</name>
+	<name>SCHEDULER-UI</name>
 	<description>Piramal - scheduler: Module ui</description>
 	<packaging>war</packaging>
 	<profiles>
@@ -57,7 +57,7 @@
 	<!-- we could create individual properties similar to variables -->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<final-name>scheduler-ui-next-v1.0</final-name>
+		<final-name>scheduler-ui-v3.0.0</final-name>
 		<hostname-dev>10.208.122.32</hostname-dev>
 		<port-dev>9990</port-dev>
 		<hostname-local>localhost</hostname-local>
@@ -73,7 +73,7 @@
 
 	<!-- install the necessary node_modules & compile in prod mode -->
 	<build>
-		<finalName>scheduler-ui-next-v1.0</finalName>
+		<finalName>scheduler-ui-v3.0.0</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-clean-plugin</artifactId>
