@@ -9,9 +9,10 @@ It acts as an interface between client and the scheduling services provided, all
 * provides specialists availability of any day
 
 ## Prerequisite
-* Java 17
-* maven
-* node 18
+* JDK 17
+* Maven 
+* Nodejs v18.10.0
+* MySQL
 
 ## Run
 * npm install -g @angular/cli@16.2.10
