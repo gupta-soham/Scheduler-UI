@@ -1,0 +1,3 @@
+<jboss-web>
+  <context-root>/scheduler</context-root>
+</jboss-web>
